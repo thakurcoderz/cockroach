@@ -1,0 +1,12 @@
+# code-review-graph MCP server data
+.code-review-graph/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
