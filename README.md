@@ -6,6 +6,7 @@ A static landing page for a satirical political party. Pure HTML/CSS + a small d
 cockroach/
 ├── index.html
 ├── styles.css
+├── press-kit.md                       (downloadable press kit, linked from /Connect)
 ├── README.md
 └── images/
     ├── logo-mark.png                  (header + footer mark)
@@ -13,6 +14,8 @@ cockroach/
     ├── podium-cockroach.png           (vision section image)
     └── banner-logo.png                (big "COCKROACH JANTA PARTY" lockup)
 ```
+
+**Live URL:** <https://cockroach-tau.vercel.app/>
 
 > Note: the orange banner's crowd silhouette is now an **inline SVG**, not a PNG — no asset needed.
 
@@ -33,13 +36,27 @@ python3 -m http.server 8000
 4. **Marquee** — orange italic ticker carrying the real trending hashtags (`#MainBhiCockroach`, `#CockroachJantaParty`, `#CockroachPower`, `#IAmACockroach`, `#StepOnUsAll`, `#VoiceOfTheLazy`).
 5. **Citation 01** — the origin remark, attributed to the CJI with date and source, followed by the CJI's later clarification footnote and a one-line satirical retort.
 6. **Vision** — copy + podium image card.
-7. **Manifesto** — dark green section with 5 large numbered demands. Highlighted middle row.
+7. **Manifesto** — dark green section with 5 large numbered demands. Each demand now has a collapsible *"Why this demand"* explainer with civic context.
 8. **Eligibility** — 4 standard cards (Unemployed / Lazy / Chronically online / Can rant professionally).
-9. **Banner** — orange section with curved green tricolor flanks, inline SVG crowd silhouette, floating central logo.
-10. **Signals strip** — two rows on a dark band: *"Early in the swarm"* (notable joiners) + *"As covered by"* (press mastheads, text only).
-11. **Connect** — contact list with `mailto:` links + animated underlines, "Or yell at us on —" socials row (Twitter / Instagram / YouTube / Telegram), giant `C·JP` decorative watermark.
-12. **Membership form** — 7-field form (Name, Phone, Email, 3× Yes/No/Maybe radio chip questions, Twitter handle with `@` prefix), orange top accent bar, hairline divider, Submit + Clear actions.
-13. **Footer** — brand block + three pill-tagged columns + bottom-row legal + JOIN pill.
+9. **FAQ** — 6 collapsible questions covering registration status, funding, employer visibility, data handling, Twitter-handle rationale, and how to leave.
+10. **Banner** — orange section with curved green tricolor flanks, inline SVG crowd silhouette, floating central logo.
+11. **Timeline** — dark-green 6-step vertical log of the first five days (May 15 → May 20), with an animated "TODAY" pill on the latest entry.
+12. **Signals strip** — two rows on a dark band: *"Early in the swarm"* (notable joiners) + *"As covered by"* (press mastheads, text only).
+13. **Connect** — contact list with `mailto:` links + animated underlines, **press kit callout** (logo downloads, fact sheet placeholder, press contact), "Or yell at us on —" socials row (Twitter / Instagram / YouTube / Telegram), giant `C·JP` decorative watermark.
+14. **Membership form** — 7-field form (Name, Phone, Email, 3× Yes/No/Maybe radio chip questions, Twitter handle with `@` prefix), orange top accent bar, hairline divider, Submit + Clear actions.
+15. **Disclaimer band** — bright orange two-column callout above the footer: legal status disclaimer + "WE DO NOT ACCEPT MONEY" position.
+16. **Footer** — brand block + three pill-tagged columns + bottom-row legal + JOIN pill.
+
+## SEO & social
+
+The `<head>` ships with:
+
+- Full `<meta name="description">`, `<meta name="keywords">`, `<meta name="theme-color">`, canonical link
+- Open Graph tags (`og:type`, `og:title`, `og:description`, `og:url`, `og:image` with dimensions, `og:locale=en_IN`)
+- Twitter Card tags (`summary_large_image`)
+- JSON-LD `Organization` schema including founder, founding date, alternate Hindi name, logo URL, and contact point
+
+Update the absolute URLs in `og:image` / `canonical` / `og:url` to your real production domain before deploying.
 
 ## Data sourcing (real-world content on the page)
 
