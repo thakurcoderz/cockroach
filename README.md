@@ -29,15 +29,30 @@ python3 -m http.server 8000
 
 1. **Top strip** — auto-scrolling dark ticker
 2. **Header** — sticky with backdrop blur, compacts + shadows on scroll. Mobile gets a hamburger that opens a right-side drawer.
-3. **Hero** — display headline ("Voice of the Lazy & Unemployed.") with an animated hand-drawn squiggle under "Lazy", pull-quote left of poster, rotated `C·JP` watermark, 4-up stats row.
-4. **Marquee** — orange italic ticker with edge fades.
-5. **Vision** — copy + podium image card.
-6. **Manifesto** — dark green section with 5 large numbered demands. Highlighted middle row.
-7. **Eligibility** — 4 standard cards (Unemployed / Lazy / Chronically online / Can rant professionally).
-8. **Banner** — orange section with curved green tricolor flanks, inline SVG crowd silhouette, floating central logo.
-9. **Connect** — contact list with `mailto:` links + animated underlines, "Or yell at us on —" socials row (Twitter / Instagram / YouTube / Telegram), giant `C·JP` decorative watermark.
-10. **Membership form** — 7-field form (Name, Phone, Email, 3× Yes/No/Maybe radio chip questions, Twitter handle with `@` prefix), orange top accent bar, hairline divider, Submit + Clear actions.
-11. **Footer** — brand block + three pill-tagged columns + bottom-row legal + JOIN pill.
+3. **Hero** — display headline ("Voice of the Lazy & Unemployed.") with an animated hand-drawn squiggle under "Lazy", pull-quote left of poster, rotated `C·JP` watermark, 4-up stats row (2M+ / 72h / 0 / 5).
+4. **Marquee** — orange italic ticker carrying the real trending hashtags (`#MainBhiCockroach`, `#CockroachJantaParty`, `#CockroachPower`, `#IAmACockroach`, `#StepOnUsAll`, `#VoiceOfTheLazy`).
+5. **Citation 01** — the origin remark, attributed to the CJI with date and source, followed by the CJI's later clarification footnote and a one-line satirical retort.
+6. **Vision** — copy + podium image card.
+7. **Manifesto** — dark green section with 5 large numbered demands. Highlighted middle row.
+8. **Eligibility** — 4 standard cards (Unemployed / Lazy / Chronically online / Can rant professionally).
+9. **Banner** — orange section with curved green tricolor flanks, inline SVG crowd silhouette, floating central logo.
+10. **Signals strip** — two rows on a dark band: *"Early in the swarm"* (notable joiners) + *"As covered by"* (press mastheads, text only).
+11. **Connect** — contact list with `mailto:` links + animated underlines, "Or yell at us on —" socials row (Twitter / Instagram / YouTube / Telegram), giant `C·JP` decorative watermark.
+12. **Membership form** — 7-field form (Name, Phone, Email, 3× Yes/No/Maybe radio chip questions, Twitter handle with `@` prefix), orange top accent bar, hairline divider, Submit + Clear actions.
+13. **Footer** — brand block + three pill-tagged columns + bottom-row legal + JOIN pill.
+
+## Data sourcing (real-world content on the page)
+
+The Citation, hero stats, signals strip, and marquee hashtags are based on reporting around the May 2026 launch of the Cockroach Janta Party. Update these as the story evolves.
+
+| Element | Where it lives | Source(s) |
+|---|---|---|
+| CJI quote + clarification | `.citation` section | Bar & Bench, India.com, The Wire, BusinessUpturn |
+| 2M+ members / 72h / 5 days | `.hero-stats` | The Week, BusinessToday, IBTimes, Logical Indian |
+| Notable joiners (Mahua Moitra, Kirti Azad) | `.signal-joined` | OneIndia, The Week |
+| Press mastheads | `.signal-press` | Wikipedia, BusinessToday, The Wire, Outlook, Deccan Herald, The Week, IBTimes, Bar & Bench, Brut |
+| Trending hashtags | `.marquee-track` | The Logical Indian, BusinessUpturn |
+| Founder (Abhijeet Dipke) | `.contact-list` | Brut, Wikipedia, The Week |
 
 ## Fonts used (Google Fonts, loaded via CDN)
 

@@ -304,6 +304,15 @@ a { color: inherit; text-decoration: none; }
   font-weight: 900;
   font-size: 48px;
   line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.stat-num small {
+  font-size: 0.55em;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: -0.02em;
 }
 .stat-label {
   font-family: var(--font-mono);
@@ -1203,6 +1212,207 @@ a { color: inherit; text-decoration: none; }
 }
 .join-pill:hover { background: var(--orange-bright); }
 
+/* ---------- CITATION (origin remark) ---------- */
+.citation {
+  background: var(--cream);
+  padding: 100px 36px 110px;
+  position: relative;
+  border-top: 1px solid rgba(21,17,11,0.08);
+  border-bottom: 1px solid rgba(21,17,11,0.08);
+}
+.citation-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+}
+.citation h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(40px, 5.2vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 8px 0 40px;
+  max-width: 720px;
+}
+.citation h2 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--green);
+}
+.citation-quote {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-left: 6px solid var(--orange);
+  border-radius: 4px;
+  padding: 40px 44px 28px;
+  margin: 0 0 36px;
+  box-shadow: 8px 10px 0 var(--ink);
+}
+.qmark-big {
+  position: absolute;
+  top: -34px;
+  left: 18px;
+  font-family: var(--font-display);
+  font-size: 130px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  pointer-events: none;
+}
+.citation-quote blockquote {
+  margin: 0 0 22px;
+  padding: 0;
+}
+.citation-quote blockquote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.citation-quote figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  align-items: baseline;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(21,17,11,0.2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.citation-quote figcaption strong {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.citation-aside {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 18px 28px;
+  padding: 22px 0 24px;
+  border-top: 1px solid rgba(21,17,11,0.14);
+  border-bottom: 1px solid rgba(21,17,11,0.14);
+  margin-bottom: 26px;
+}
+.citation-aside .aside-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding-top: 4px;
+}
+.citation-aside p {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.citation-aside small {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.citation-after {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 30px);
+  text-align: right;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.citation-after em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--orange);
+}
+
+/* ---------- SIGNALS (joined + press strips) ---------- */
+.signals {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 36px;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+.signals-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+.signal-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 22px;
+  align-items: center;
+  padding: 14px 0;
+}
+.signal-row + .signal-row {
+  border-top: 1px solid rgba(243,231,207,0.14);
+}
+.signal-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange-soft);
+}
+.signal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  align-items: baseline;
+}
+.signal-joined .signal-list li {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.signal-joined .signal-list strong {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--cream);
+}
+.signal-joined .signal-list small {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(243,231,207,0.55);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+.signal-press .signal-list li {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(243,231,207,0.85);
+  position: relative;
+  padding-right: 28px;
+}
+.signal-press .signal-list li::after {
+  content: "·";
+  position: absolute;
+  right: 8px;
+  color: var(--orange);
+  opacity: 0.7;
+}
+.signal-press .signal-list li:last-child::after { content: ""; }
+
 /* ---------- RESPONSIVE ---------- */
 
 /* Tablet + small desktop */
@@ -1340,6 +1550,15 @@ a { color: inherit; text-decoration: none; }
   .banner { height: 280px; }
   .banner-logo { max-height: 180px; }
   .banner-crowd { bottom: 70px; height: 70px; }
+
+  .citation { padding: 70px 24px 80px; }
+  .citation-quote { padding: 36px 26px 22px; box-shadow: 6px 8px 0 var(--ink); }
+  .qmark-big { font-size: 90px; top: -22px; }
+  .citation-aside { grid-template-columns: 1fr; gap: 8px; }
+  .citation-after { text-align: left; }
+
+  .signals { padding: 28px 24px; }
+  .signal-row { grid-template-columns: 1fr; gap: 10px; padding: 16px 0; }
 }
 
 /* Small phones */
@@ -1378,6 +1597,14 @@ a { color: inherit; text-decoration: none; }
   .connect::before { font-size: 150px; bottom: -30px; }
   .connect-socials { gap: 10px 12px; }
   .connect-socials a { padding: 7px 12px; font-size: 10px; }
+
+  .citation { padding: 56px 18px 64px; }
+  .citation-quote { padding: 30px 20px 18px; }
+  .qmark-big { font-size: 72px; top: -16px; left: 12px; }
+  .citation-quote blockquote p { font-size: 17px; }
+  .signal-press .signal-list { gap: 8px 16px; }
+  .signal-press .signal-list li { padding-right: 18px; font-size: 14px; }
+  .stat-num { font-size: 36px; }
 }
 
 /* ---------- GRAIN / PAPER OVERLAY ---------- */
