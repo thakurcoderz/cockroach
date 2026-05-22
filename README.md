@@ -19,6 +19,8 @@ cockroach/
 
 **Live URL:** <https://cockroach-tau.vercel.app/>
 
+![Cockroach Janta Party](images/main-website.png)
+
 > The orange banner crowd silhouette is an **inline SVG**, not a PNG.
 
 ## Run it
