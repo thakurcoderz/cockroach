@@ -543,8 +543,8 @@
         <p class="timeline-lede">A movement measured in days, not election cycles.</p>
       </div>
 
-      <ol class="timeline-list">
-        <li class="timeline-item" data-reveal>
+      <ol class="timeline-list timeline-list--collapsed" id="timelineList">
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-15">15 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">THE REMARK</span>
@@ -552,7 +552,7 @@
             <p>CJI Surya Kant compares unemployed youth to cockroaches during a Supreme Court hearing. The clip goes viral within hours.</p>
           </div>
         </li>
-        <li class="timeline-item" data-reveal>
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-16">16 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">THE LAUNCH</span>
@@ -560,7 +560,7 @@
             <p>Abhijeet Dipke announces the Cockroach Janta Party on X. Four eligibility criteria. One running joke. The handle takes off overnight.</p>
           </div>
         </li>
-        <li class="timeline-item" data-reveal>
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-17">17 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">DAY 02</span>
@@ -568,7 +568,7 @@
             <p>Memes spread to WhatsApp and Telegram groups across colleges. The membership form goes live.</p>
           </div>
         </li>
-        <li class="timeline-item" data-reveal>
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-18">18 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">DAY 03</span>
@@ -576,7 +576,7 @@
             <p>Instagram followers cross one million. <em>#MainBhiCockroach</em> trends nationally on every major platform.</p>
           </div>
         </li>
-        <li class="timeline-item" data-reveal>
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-19">19 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">DAY 04</span>
@@ -584,13 +584,22 @@
             <p>TMC MPs Mahua Moitra and Kirti Azad publicly back the movement. Sign-ups cross one lakh. The CJI issues a press clarification — the remark, he says, was misquoted.</p>
           </div>
         </li>
-        <li class="timeline-item" data-reveal>
+        <li class="timeline-item timeline-item-older" data-reveal>
           <time datetime="2026-05-20">20 May <span>'26</span></time>
           <div class="t-body">
             <span class="t-tag">DAY 05</span>
             <h3>9 million on Instagram.</h3>
             <p>The handle crosses nine million followers and overtakes the BJP on Instagram. Website sign-ups pass 1.6 lakh.</p>
           </div>
+        </li>
+        <li class="timeline-load" id="timelineLoadItem">
+          <button type="button" class="expand-arrow-toggle timeline-toggle" id="timelineToggle"
+                  aria-expanded="false" aria-controls="timelineList"
+                  aria-label="Show earlier days in the log">
+            <span class="expand-arrow-wrap" aria-hidden="true">
+              <span class="expand-arrow"></span>
+            </span>
+          </button>
         </li>
         <li class="timeline-item" data-reveal>
           <time datetime="2026-05-21">21 May <span>'26</span></time>
@@ -686,11 +695,16 @@
             <p>Thousands joined an online “Rochak Sabha” (Interesting Assembly) from across India and the diaspora. Volunteers also staged a Yamuna river clean-up in cockroach costumes — turning the slur into a public civic gesture.</p>
           </div>
         </li>
+        <li class="news-feed-actions-row">
+          <button type="button" class="expand-arrow-toggle news-feed-toggle" id="newsFeedToggle"
+                  aria-expanded="false" aria-controls="newsFeed"
+                  aria-label="Show earlier updates">
+            <span class="expand-arrow-wrap" aria-hidden="true">
+              <span class="expand-arrow"></span>
+            </span>
+          </button>
+        </li>
       </ul>
-      <button type="button" class="btn btn-ghost news-feed-toggle" id="newsFeedToggle"
-              aria-expanded="false" aria-controls="newsFeed">
-        Show earlier updates <span class="news-feed-count">(6)</span>
-      </button>
     </div>
   </section>
 
@@ -959,84 +973,6 @@
   <!-- print grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ---- Sticky header: shadow + compact state on scroll ----
-    const header = document.getElementById('siteHeader');
-    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // ---- Mobile nav toggle ----
-    const navToggle = document.getElementById('navToggle');
-    const primaryNav = document.getElementById('primaryNav');
-
-    const setNavOpen = (open) => {
-      primaryNav.classList.toggle('is-open', open);
-      navToggle.classList.toggle('is-open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-      document.body.classList.toggle('nav-open', open);
-    };
-
-    navToggle.addEventListener('click', () => {
-      setNavOpen(!primaryNav.classList.contains('is-open'));
-    });
-    primaryNav.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => setNavOpen(false))
-    );
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setNavOpen(false);
-    });
-    // close drawer when resizing back to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 820) setNavOpen(false);
-    });
-
-    // ---- Staggered scroll reveal ----
-    const targets = document.querySelectorAll('[data-reveal], .demands li, .standards li, .stat, .footer-col');
-    targets.forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.setProperty('--reveal-delay', (i % 5) * 60 + 'ms');
-    });
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    const newsFeed = document.getElementById('newsFeed');
-    const newsFeedToggle = document.getElementById('newsFeedToggle');
-    if (newsFeed && newsFeedToggle) {
-      const olderCount = newsFeed.querySelectorAll('.news-item-older').length;
-      const labelCollapsed = 'Show earlier updates';
-      const labelExpanded = 'Show less';
-
-      const setToggleLabel = (collapsed) => {
-        newsFeedToggle.setAttribute('aria-expanded', String(!collapsed));
-        while (newsFeedToggle.firstChild) newsFeedToggle.removeChild(newsFeedToggle.firstChild);
-        newsFeedToggle.append(document.createTextNode(collapsed ? labelCollapsed + ' ' : labelExpanded + ' '));
-        if (collapsed) {
-          const span = document.createElement('span');
-          span.className = 'news-feed-count';
-          span.textContent = '(' + olderCount + ')';
-          newsFeedToggle.append(span);
-        } else {
-          const arrow = document.createElement('span');
-          arrow.setAttribute('aria-hidden', 'true');
-          arrow.textContent = '\u2191';
-          newsFeedToggle.append(arrow);
-        }
-      };
-
-      newsFeedToggle.addEventListener('click', () => {
-        setToggleLabel(newsFeed.classList.toggle('news-feed--collapsed'));
-      });
-    }
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
