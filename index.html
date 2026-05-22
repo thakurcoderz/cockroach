@@ -612,6 +612,88 @@
     </div>
   </section>
 
+  <!-- RECENT NEWS -->
+  <section class="recent-news" id="news">
+    <div class="recent-news-inner">
+      <div class="recent-news-head" data-reveal>
+        <span class="eyebrow">WIRE · LIVE</span>
+        <h2>What's happening <em>right now.</em></h2>
+        <p class="recent-news-lede">As of 22 May 2026 — the swarm updates faster than the news cycle.</p>
+      </div>
+
+      <ul class="news-feed news-feed--collapsed" id="newsFeed">
+        <li class="news-item news-item-alert" data-reveal>
+          <time datetime="2026-05-22">22 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag news-tag-live">INSTAGRAM · ACTIVE THREAT</span>
+            <h3>Repeated hack attempts on the gram.</h3>
+            <p>Abhijeet Dipke shared screenshots of Instagram password-reset alerts and wrote that attempts are being made to access @cockroachjantaparty. The account remains live while follower counts climb past 18.7 million.</p>
+          </div>
+        </li>
+        <li class="news-item" data-reveal>
+          <time datetime="2026-05-22">22 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">INSTAGRAM · MILESTONE</span>
+            <h3>18.7 million — past BJP and Congress.</h3>
+            <p>Seven days after launch, the handle reportedly crossed 18.7 million followers on Instagram — overtaking the BJP and closing in on or passing the Congress party’s official count, with a fraction of the posts major parties have published.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-alert news-item-older" data-reveal>
+          <time datetime="2026-05-21">21 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">X · WITHHELD</span>
+            <h3>The X account is blocked in India.</h3>
+            <p>@CJP_2029 was withheld nationwide after a legal demand. Users in India see “Account Withheld” instead of the feed. The handle had crossed 165,000–200,000 followers before the block. Dipke called it expected and said there had been hack attempts the day before.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-older" data-reveal>
+          <time datetime="2026-05-21">21 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">X · BACK ONLINE</span>
+            <h3>“Cockroach is Back” on X.</h3>
+            <p>Hours after the main handle was restricted in India, Dipke launched a backup account on X with the message: “You thought you can get rid of us? Lol.” Instagram stayed active with 13M+ followers at the time.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-older" data-reveal>
+          <time datetime="2026-05-20">20 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">INSTAGRAM · RECORD</span>
+            <h3>Overtook the BJP on the gram.</h3>
+            <p>Within five days of launch, CJP’s Instagram following passed the ruling BJP’s official handle (~8.7M) with far fewer posts — turning a court-room insult into the fastest-growing political account in recent Indian social media history.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-older" data-reveal>
+          <time datetime="2026-05-20">20 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">SWARM · NEXT</span>
+            <h3>Virtual Gen-Z convention announced.</h3>
+            <p>The party said it will host an online Gen-Z convention and invited young supporters to help organise it — alongside sign-ups crossing 1.6 lakh and international coverage from outlets including Al Jazeera.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-older" data-reveal>
+          <time datetime="2026-05-20">20 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">ELECTION · WATCH</span>
+            <h3>Bankipur by-election talk.</h3>
+            <p>Press reports say supporters are discussing an independent run in the Bankipur Assembly by-election in Bihar. CJP is not registered with the Election Commission — no candidate has been confirmed.</p>
+          </div>
+        </li>
+        <li class="news-item news-item-older" data-reveal>
+          <time datetime="2026-05-19">19 May <span>'26</span></time>
+          <div class="news-body">
+            <span class="news-tag">OFFLINE · SWARM</span>
+            <h3>Rochak Sabha and street action.</h3>
+            <p>Thousands joined an online “Rochak Sabha” (Interesting Assembly) from across India and the diaspora. Volunteers also staged a Yamuna river clean-up in cockroach costumes — turning the slur into a public civic gesture.</p>
+          </div>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-ghost news-feed-toggle" id="newsFeedToggle"
+              aria-expanded="false" aria-controls="newsFeed">
+        Show earlier updates <span class="news-feed-count">(6)</span>
+      </button>
+    </div>
+  </section>
+
   <!-- EARLY JOINERS + PRESS -->
   <section class="signals">
     <div class="signals-inner">
@@ -926,6 +1008,35 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const newsFeed = document.getElementById('newsFeed');
+    const newsFeedToggle = document.getElementById('newsFeedToggle');
+    if (newsFeed && newsFeedToggle) {
+      const olderCount = newsFeed.querySelectorAll('.news-item-older').length;
+      const labelCollapsed = 'Show earlier updates';
+      const labelExpanded = 'Show less';
+
+      const setToggleLabel = (collapsed) => {
+        newsFeedToggle.setAttribute('aria-expanded', String(!collapsed));
+        while (newsFeedToggle.firstChild) newsFeedToggle.removeChild(newsFeedToggle.firstChild);
+        newsFeedToggle.append(document.createTextNode(collapsed ? labelCollapsed + ' ' : labelExpanded + ' '));
+        if (collapsed) {
+          const span = document.createElement('span');
+          span.className = 'news-feed-count';
+          span.textContent = '(' + olderCount + ')';
+          newsFeedToggle.append(span);
+        } else {
+          const arrow = document.createElement('span');
+          arrow.setAttribute('aria-hidden', 'true');
+          arrow.textContent = '\u2191';
+          newsFeedToggle.append(arrow);
+        }
+      };
+
+      newsFeedToggle.addEventListener('click', () => {
+        setToggleLabel(newsFeed.classList.toggle('news-feed--collapsed'));
+      });
+    }
   </script>
 </body>
 </html>
